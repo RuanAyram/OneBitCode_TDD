@@ -1,0 +1,8 @@
+<% @weapons.each do |weapon| %>
+  <div style="border: 1px solid red;">
+    <%= weapon.name %> - <%= weapon.description %>
+    <p><%= weapon.current_power %></p>
+    <p><%= weapon.title %></p>
+    <%= link_to 'Show', weapon %>
+  </div>
+<% end -%>
