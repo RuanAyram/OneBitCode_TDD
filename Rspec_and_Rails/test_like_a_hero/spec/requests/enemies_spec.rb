@@ -1,6 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe "Enemies", type: :request do
+  describe "GET /enemies" do
+    it "returns success status" do
+      get enemies_path
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "GET /enemies/:id" do
+    let(:enemy) { create(:enemy) }
+
+    it "returns success status" do
+      get enemies_path(:enemy)
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "POST /enemies" do
+    context "when have valid attributes" do
+      it "creates the enemy with correct attributes" do
+        enemy_attributes = attributes_for(:enemy)
+        post enemies_path, params: enemy_attributes
+        expect(Enemy.last).to have_attributes(enemy_attributes)
+      end
+    end
+
+    context "when does not have valid attributes" do
+      it "does not create enemy" do
+        expect {
+          post enemies_path, params: { name: '', level: '' }
+        }.to_not change(Enemy, :count)
+      end
+    end
+  end
+
   describe "PUT /enemies" do
     context "when the enemy exists" do
       let(:enemy) { create(:enemy) }
