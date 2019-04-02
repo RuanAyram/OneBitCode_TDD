@@ -4,5 +4,5 @@ Tutorial disponivel em [OneBitCode](https://onebitcode.com/course/minicurso-de-t
 
 | Folder  | Status |
 | :---: |:-------:|
-| Rspec and Rails | In Progress |
+| Rspec and Rails | Finished |
 | Rspec and Ruby | Finished |
